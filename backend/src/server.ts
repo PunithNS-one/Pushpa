@@ -48,7 +48,8 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   res.status(500).json({ error: 'Internal server error' });
 });
 
-const PORT = process.env.PORT || 4000;
+const PORT = parseInt(process.env.PORT || '4000', 10);
+const HOST = process.env.HOST || '0.0.0.0';
 
 // Start server
 async function startServer() {
@@ -56,8 +57,8 @@ async function startServer() {
     // Connect to Redis
     await connectRedis();
 
-    app.listen(PORT, () => {
-      console.log(`✓ MicroSync backend running on http://localhost:${PORT}`);
+    app.listen(PORT, HOST, () => {
+      console.log(`✓ MicroSync backend running on http://${HOST}:${PORT}`);
       console.log(`✓ Environment: ${process.env.NODE_ENV || 'development'}`);
       console.log(`✓ CORS enabled for: ${corsOptions.origin}`);
     });

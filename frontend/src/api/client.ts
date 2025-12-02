@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+// Use environment variable or default to localhost for development
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000';
 
 const apiClient = axios.create({
@@ -7,6 +8,7 @@ const apiClient = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
+  timeout: 30000, // 30 second timeout
 });
 
 export interface CreateSessionRequest {

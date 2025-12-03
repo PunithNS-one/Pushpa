@@ -9,6 +9,12 @@ const app = express();
 // Trust proxy for Railway deployment
 app.set('trust proxy', 1);
 
+// Debug: Log environment variables
+console.log('🔍 Environment Variables:');
+console.log('NODE_ENV:', process.env.NODE_ENV);
+console.log('FRONTEND_URL:', process.env.FRONTEND_URL);
+console.log('REDIS_URL:', process.env.REDIS_URL ? 'SET' : 'NOT SET');
+
 // CORS configuration
 const corsOptions = {
   origin: process.env.FRONTEND_URL || 'http://localhost:5173',

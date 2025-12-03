@@ -9,6 +9,9 @@ dotenv.config();
 
 const app = express();
 
+// Trust proxy for Railway deployment
+app.set('trust proxy', 1);
+
 // CORS configuration
 const corsOptions = {
   origin: process.env.FRONTEND_URL || 'http://localhost:5173',

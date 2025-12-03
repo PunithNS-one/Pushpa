@@ -1,11 +1,8 @@
 import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
-import dotenv from 'dotenv';
 import rateLimit from 'express-rate-limit';
 import { connectRedis } from './config/redisClient';
 import syncRoutes from './routes/syncRoutes';
-
-dotenv.config();
 
 const app = express();
 
